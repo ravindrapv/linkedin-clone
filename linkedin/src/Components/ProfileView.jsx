@@ -428,16 +428,16 @@ const ProfileView = () => {
             <section>
               <div className="grid grid-cols-8 grid-rows-[70px_minmax(70px,_1fr)] gap-2 mt-5 max-[1060px]:w-10/12 max-[768px]:mx-auto">
                 {/* grid main box 1 */}
-                <div className=" bg-[rgb(29,34,38)] col-[2_/_span_4] rounded-md row-[1_/_span_1] flex items-center justify-between max-[768px]:col-span-8">
+                <div className="  bg-slate-100 col-[2_/_span_4] rounded-md row-[1_/_span_1] flex items-center justify-between max-[768px]:col-span-8">
                   <p className="ml-5">
-                    <span className="text-white font-bold ">
+                    <span className=" text-black font-bold ">
                       Analytics &amp; tools
                     </span>
                     <br />
                     <span className="text-gray-400 font-bold text-[12px]">
                       Post impressions past 7 days
                     </span>
-                    <span className="text-white font-bold text-[12px]">
+                    <span className=" text-black font-bold text-[12px]">
                       197
                     </span>
                     <span className="text-green-400 font-bold text-[12px] ml-1">
@@ -448,10 +448,10 @@ const ProfileView = () => {
                   <i className="fa-sharp fa-solid fa-arrow-right mr-5 text-gray-400" />
                 </div>
                 {/* grid slider 1 */}
-                <div className="col-[6_/_span_2] row-[1_/_span_2] bg-[rgb(29,34,38)] rounded-md w-[374px] max-[1060px]:w-[300px] max-[1060px]:h-fit max-[768px]:col-span-8 max-[768px]:row-[6_/_span_1] max-[768px]:w-full">
+                <div className="col-[6_/_span_2] row-[1_/_span_2]  bg-slate-100 rounded-md w-[374px] max-[1060px]:w-[300px] max-[1060px]:h-fit max-[768px]:col-span-8 max-[768px]:row-[6_/_span_1] max-[768px]:w-full">
                   <div className="flex justify-between">
                     <p className="px-4 py-4">
-                      <span className="text-white font-bold">
+                      <span className=" text-black font-bold">
                         Profile language
                       </span>
                       <br />
@@ -476,7 +476,7 @@ const ProfileView = () => {
                     <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto" />
                   </div>
                   <div className="flex justify-between">
-                    <p className="px-4 py-4 text-white font-bold">
+                    <p className="px-4 py-4  text-black font-bold">
                       <span>Public profile &amp; URL</span>
                       <br />
                       <span className="text-gray-400 text-[14px]">
@@ -498,7 +498,7 @@ const ProfileView = () => {
                   </div>
                 </div>
                 {/* grid main box 2*/}
-                <div className="col-[2_/_span_4] row-[2_/_span_2] bg-[rgb(29,34,38)] rounded-md max-[768px]:row-[2_/_span_1] max-[768px]:col-span-8">
+                <div className="col-[2_/_span_4] row-[2_/_span_2]  bg-slate-100 rounded-md max-[768px]:row-[2_/_span_1] max-[768px]:col-span-8">
                   <div>
                     <div>
                       <div className="flex">
@@ -532,10 +532,10 @@ const ProfileView = () => {
                     </div>
                     <div className="flex justify-between -mt-24">
                       <div className="ml-5">
-                        <h1 className="font-bold text-white text-2xl max-[990px]:text-[18px]">
+                        <h1 className="font-bold  text-black text-2xl max-[990px]:text-[18px]">
                           {displayName}
                         </h1>
-                        <p className="text-gray-300 font-medium max-[990px]:text-[13px]">
+                        <p className="text-gray-800 font-medium max-[990px]:text-[13px]">
                           {description}
                         </p>
                         <p className="text-gray-400 max-[990px]:text-[13px]">
@@ -557,32 +557,32 @@ const ProfileView = () => {
                           <button className="text-blue-500 border-blue-500 border rounded-l-full rounded-r-full h-8 w-40 ml-1 max-[951px]:mt-2">
                             Add profile section
                           </button>
-                          <button className="text-white border-white border rounded-l-full rounded-r-full h-8 w-16 ml-1 max-[1060px]:mt-2">
+                          <button className=" text-black border-white border rounded-l-full rounded-r-full h-8 w-16 ml-1 max-[1060px]:mt-2">
                             More
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="bg-[rgb(29,34,38)] col-[2_/_span_4] row-span-4 rounded-md max-[768px]:col-span-8 max-[768px]:row-[4_/_span_1] p-4">
+                  <div className=" bg-slate-100 col-[2_/_span_4] row-span-4 rounded-md max-[768px]:col-span-8 max-[768px]:row-[4_/_span_1] p-4">
                     <div className="flex justify-between mt-4 mx-4">
                       <div>
-                        <h2 className="text-white font-bold text-xl">About</h2>
+                        <h2 className=" text-black font-bold text-xl">About</h2>
                       </div>
                     </div>
                     <hr className="w-full  h-[1px] border-[#ffffff1f] mx-auto mb-5 mt-5" />
-                    <p className="mb-2 flex justify-center font-bold text-white">
+                    <p className="mb-2 flex justify-center font-bold  text-black">
                       {bio}
                     </p>
                   </div>
                 </div>
                 {/* grid slider 2 */}
-                <div className="col-[6_/_span_2] bg-[rgb(29,34,38)] row-[3_/_span_2] rounded-md w-[374px] max-[1060px]:w-[300px] max-[1060px]:mt-1  max-[768px]:col-span-8 max-[768px]:row-[8_/_span_1]  max-[768px]:w-full">
+                <div className="col-[6_/_span_2]  bg-slate-100 row-[3_/_span_2] rounded-md w-[374px] max-[1060px]:w-[300px] max-[1060px]:mt-1  max-[768px]:col-span-8 max-[768px]:row-[8_/_span_1]  max-[768px]:w-full">
                   {/* slider-2-box-1 */}
-                  <p className="px-8 py-5 text-white font-bold">
+                  <p className="px-8 py-5  text-black font-bold">
                     People also viewed
                   </p>
-                  <div className="flex text-white px-8 py-4">
+                  <div className="flex  text-black px-8 py-4">
                     <div className="w-[60px] h-[60px] rounded-full">
                       <img
                         src="https://media.licdn.com/dms/image/D4D03AQFpe9ODTLbXTQ/profile-displayphoto-shrink_200_200/0/1698399975239?e=1707955200&v=beta&t=cEK8yPzNV0e1mNGgj19cQZNFd17BPOj2ICxrI_kO08Q"
@@ -602,7 +602,7 @@ const ProfileView = () => {
                       <p />
                     </div>
                   </div>
-                  <div className="flex justify-center text-white font-bold">
+                  <div className="flex justify-center  text-black font-bold">
                     <button className="border-2 rounded-l-full rounded-r-full w-40 h-10">
                       <i className="fa-solid fa-user-plus mr-2" />
                       Connect
@@ -610,7 +610,7 @@ const ProfileView = () => {
                   </div>
                   <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto mt-6" />
                   {/* grid-slider-2-box-2 */}
-                  <div className="flex text-white px-8 py-4">
+                  <div className="flex  text-black px-8 py-4">
                     <div className="w-[60px] h-[60px] rounded-full">
                       <img
                         src="https://media.licdn.com/dms/image/C4E03AQHUZ0gyQ0zsYQ/profile-displayphoto-shrink_200_200/0/1619003822409?e=1707955200&v=beta&t=8Rb4Fo_qz6tKM4i1tUYi5-OexwIPbXUMD4x1ssy4Qts"
@@ -629,7 +629,7 @@ const ProfileView = () => {
                       <p />
                     </div>
                   </div>
-                  <div className="flex justify-center text-white font-bold">
+                  <div className="flex justify-center  text-black font-bold">
                     <button className="border-2 rounded-l-full rounded-r-full w-40 h-10">
                       <i className="fa-solid fa-plus mr-2" />
                       Connect
@@ -637,7 +637,7 @@ const ProfileView = () => {
                   </div>
                   <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto mt-6" />
                   {/* grid-slider-2-box-3 */}
-                  <div className="flex text-white px-8 py-4">
+                  <div className="flex  text-black px-8 py-4">
                     <div className="w-[60px] h-[60px] rounded-full">
                       <img
                         src="https://media.licdn.com/dms/image/C5603AQGi2cGPbdWqNg/profile-displayphoto-shrink_200_200/0/1634532786337?e=1707955200&v=beta&t=WCGH2VOawaFVhMoHT6ec17FSq2IqPltdp6Xm-_ICpd4"
@@ -656,7 +656,7 @@ const ProfileView = () => {
                       <p />
                     </div>
                   </div>
-                  <div className="flex justify-center text-white font-bold">
+                  <div className="flex justify-center  text-black font-bold">
                     <button className="border-2 rounded-l-full rounded-r-full w-40 h-10">
                       <i className="fa-solid fa-plus mr-2" />
                       Connect
@@ -664,7 +664,7 @@ const ProfileView = () => {
                   </div>
                   <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto mt-6" />
                   {/* grid-slider-2-box-4 */}
-                  <div className="flex text-white px-8 py-4">
+                  <div className="flex  text-black px-8 py-4">
                     <div className="w-[60px] h-[60px] rounded-full">
                       <img
                         src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR-o6hgJ_xP_VYrdNT2so6fF7YnrifpJS3RTYnASME-qUhYf6Mz"
@@ -683,7 +683,7 @@ const ProfileView = () => {
                       <p />
                     </div>
                   </div>
-                  <div className="flex justify-center text-white font-bold">
+                  <div className="flex justify-center  text-black font-bold">
                     <button className="border-2 rounded-l-full rounded-r-full w-40 h-10">
                       <i className="fa-solid fa-user-plus mr-2" />
                       Connect
@@ -691,7 +691,7 @@ const ProfileView = () => {
                   </div>
                   <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto mt-6" />
                   {/* grid-slider-2-box-5 */}
-                  <div className="flex text-white px-8 py-4">
+                  <div className="flex  text-black px-8 py-4">
                     <div className="w-[60px] h-[60px] rounded-full">
                       <img
                         src="https://media.licdn.com/dms/image/D4D03AQF3VjmJ6YfwWw/profile-displayphoto-shrink_400_400/0/1671718163886?e=1707955200&v=beta&t=OsgxTG-jr4W8XOJIojt-rXVFeL-85oUhSlge0_EkPPI"
@@ -710,23 +710,23 @@ const ProfileView = () => {
                       <p />
                     </div>
                   </div>
-                  <div className="flex justify-center text-white font-bold">
+                  <div className="flex justify-center  text-black font-bold">
                     <button className="border-2 rounded-l-full rounded-r-full w-40 h-10">
                       <i className="fa-solid fa-user-plus mr-2" />
                       Connect
                     </button>
                   </div>
                   <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto mt-6" />
-                  <p className="text-center font-bold text-white mt-3 mb-3">
+                  <p className="text-center font-bold  text-black mt-3 mb-3">
                     Show All
                   </p>
                 </div>
                 {/* grid main box 3 */}
                 <div
-                  className="bg-[rgb(29,34,38)] col-[2_/_span_4] row-[4_/_span_1] rounded-md max-[768px]:row-[3_/_span_1]
+                  className=" bg-slate-100 col-[2_/_span_4] row-[4_/_span_1] rounded-md max-[768px]:row-[3_/_span_1]
           max-[768px]:col-span-8 h-fit"
                 >
-                  <h2 className="text-white text-xl font-bold ml-5">
+                  <h2 className=" text-black text-xl font-bold ml-5">
                     Resourses
                   </h2>
                   <p className="text-gray-400 font-medium ml-5">
@@ -734,7 +734,7 @@ const ProfileView = () => {
                     Private to you
                   </p>
                   <div>
-                    <h2 className="text-white font-bold  ml-5">
+                    <h2 className=" text-black font-bold  ml-5">
                       <i className="fa-sharp fa-solid fa-satellite-dish text-gray-400" />
                       Creator mode{" "}
                       <span className="px-[8px] bg-green-500 rounded-md text-black">
@@ -750,7 +750,7 @@ const ProfileView = () => {
                   <div>
                     <h2 className="text-gray-400 ml-5">
                       <i className="mr-10 fa-solid fa-user-group" />
-                      <span className="text-white font-bold -ml-9">
+                      <span className=" text-black font-bold -ml-9">
                         My network
                       </span>
                     </h2>
@@ -759,16 +759,16 @@ const ProfileView = () => {
                     </p>
                   </div>
                   <hr className="w-full  h-[1px] border-[#ffffff1f] mx-auto mb-2 mt-2" />
-                  <p className="mb-2 flex justify-center font-bold text-white">
+                  <p className="mb-2 flex justify-center font-bold  text-black">
                     {" "}
                     Show all 5 resourses
                   </p>
                 </div>
                 {/* grid main box 4 */}
-                <div className="bg-[rgb(29,34,38)] col-[2_/_span_4] row-span-4 rounded-md max-[768px]:col-span-8 max-[768px]:row-[4_/_span_1] p-4">
+                <div className=" bg-slate-100 col-[2_/_span_4] row-span-4 rounded-md max-[768px]:col-span-8 max-[768px]:row-[4_/_span_1] p-4">
                   <div className="flex justify-between mt-4 mx-4">
                     <div>
-                      <h2 className="text-white font-bold text-xl">
+                      <h2 className=" text-black font-bold text-xl">
                         Experience
                       </h2>
                     </div>
@@ -788,7 +788,7 @@ const ProfileView = () => {
                             viewBox="0 0 24 24"
                             data-supported-dps="24x24"
                             fill="currentColor"
-                            className="mercado-match text-white"
+                            className="mercado-match  text-black"
                             width={24}
                             height={24}
                             focusable="false"
@@ -948,9 +948,9 @@ const ProfileView = () => {
                   )}
                 </div>
                 {/* grid main box 4 */}
-                <div className="bg-[rgb(29,34,38)] col-[2_/_span_4] row-span-5 rounded-md max-[768px]:col-span-8 max-[768px]:row-[5_/_span_1]">
+                <div className=" bg-slate-100 col-[2_/_span_4] row-span-5 rounded-md max-[768px]:col-span-8 max-[768px]:row-[5_/_span_1]">
                   <div className="flex justify-between mt-5 mx-4 mb-6">
-                    <div className="text-white font-bold text-xl">
+                    <div className=" text-black font-bold text-xl">
                       <h2>Skills</h2>
                     </div>
                     <div>
@@ -958,13 +958,13 @@ const ProfileView = () => {
                         <button className="mr-4 text-blue-500 font-medium border border-blue-500 px-2 py-1 rounded-l-full rounded-r-full">
                           Take skill quiz
                         </button>
-                        <i className="fa-solid fa-plus mr-4 text-white" />
+                        <i className="fa-solid fa-plus mr-4  text-black" />
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           data-supported-dps="24x24"
                           fill="currentColor"
-                          className="mercado-match text-white"
+                          className="mercado-match  text-black"
                           width={24}
                           height={24}
                           focusable="false"
@@ -977,7 +977,7 @@ const ProfileView = () => {
                   <div className="ml-4">
                     <div>
                       <div>
-                        <h2 className="font-medium text-xl text-white mb-2">
+                        <h2 className="font-medium text-xl  text-black mb-2">
                           Html 5
                         </h2>
                       </div>
@@ -987,7 +987,7 @@ const ProfileView = () => {
                           alt=""
                           className="w-6 h-6"
                         />
-                        <p className="ml-2 text-white text-[14px]">
+                        <p className="ml-2  text-black text-[14px]">
                           Marwari college ranchi
                         </p>
                       </div>
@@ -995,7 +995,7 @@ const ProfileView = () => {
                     <hr className="w-[95%]  h-[1px] border-[#ffffff1f] mx-auto mt-7 mb-7" />
                     <div>
                       <div>
-                        <h2 className="font-medium text-xl text-white mb-2">
+                        <h2 className="font-medium text-xl  text-black mb-2">
                           Cascading style sheets (CSS)
                         </h2>
                       </div>
@@ -1005,7 +1005,7 @@ const ProfileView = () => {
                           alt=""
                           className="w-6 h-6"
                         />
-                        <p className="ml-2 text-white text-[14px]">
+                        <p className="ml-2  text-black text-[14px]">
                           Marwari college ranchi
                         </p>
                       </div>
@@ -1013,7 +1013,7 @@ const ProfileView = () => {
                     <hr className="w-[95%]  h-[1px] border-[#ffffff1f] mx-auto mt-7 mb-7" />
                     <div className="mb-5">
                       <div>
-                        <h2 className="font-medium text-xl text-white mb-2">
+                        <h2 className="font-medium text-xl  text-black mb-2">
                           Tailwind CSS
                         </h2>
                       </div>
@@ -1023,7 +1023,7 @@ const ProfileView = () => {
                           className="w-6 h-6"
                           alt=""
                         />
-                        <p className="ml-2 text-white text-[14px]">
+                        <p className="ml-2  text-black text-[14px]">
                           Marwari college ranchi
                         </p>
                       </div>
@@ -1031,13 +1031,13 @@ const ProfileView = () => {
                   </div>
                 </div>
                 {/* grid slider 3 */}
-                <div className="col-[6_/_span_2] row-[5_/_span_2] bg-[rgb(29,34,38)] rounded-md w-[374px] max-[1060px]:w-[300px] max-[768px]:col-span-8 max-[768px]:row-[7_/_span_1]  max-[768px]:w-full">
+                <div className="col-[6_/_span_2] row-[5_/_span_2]  bg-slate-100 rounded-md w-[374px] max-[1060px]:w-[300px] max-[768px]:col-span-8 max-[768px]:row-[7_/_span_1]  max-[768px]:w-full">
                   <div className="mt-5 ml-5 mr-14">
-                    <h2 className="text-white">
+                    <h2 className=" text-black">
                       <i className="fa-brands fa-linkedin" />
                       <span className="ml-2 font-semibold">LEARNING</span>
                     </h2>
-                    <p className="text-white font-semibold mt-2">
+                    <p className=" text-black font-semibold mt-2">
                       Add new skills with these courses, free for 24 hours
                     </p>
                   </div>
@@ -1048,7 +1048,7 @@ const ProfileView = () => {
                       alt=""
                       className="w-[100px] h-[60px]"
                     />
-                    <p className="w-40 overflow-hidden text-ellipsis whitespace-nowrap ml-3 text-white font-medium">
+                    <p className="w-40 overflow-hidden text-ellipsis whitespace-nowrap ml-3  text-black font-medium">
                       Create a Quick, Clean, <br /> and Cheap Website with
                     </p>
                   </div>
@@ -1060,7 +1060,7 @@ const ProfileView = () => {
                       alt=""
                       className="w-[100px] h-[60px]"
                     />
-                    <p className="w-40 overflow-hidden text-ellipsis whitespace-nowrap ml-3 text-white font-medium">
+                    <p className="w-40 overflow-hidden text-ellipsis whitespace-nowrap ml-3  text-black font-medium">
                       Creating flowcharts for <br />
                       Beginners
                     </p>
@@ -1073,12 +1073,12 @@ const ProfileView = () => {
                       alt=""
                       className="w-[100px] h-[60px]"
                     />
-                    <p className="w-40 overflow-hidden text-ellipsis whitespace-nowrap ml-3 text-white font-medium">
+                    <p className="w-40 overflow-hidden text-ellipsis whitespace-nowrap ml-3  text-black font-medium">
                       CSS: print style sheets
                     </p>
                   </div>
                   <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto mb-4 mt-4" />
-                  <p className="mb-2 flex justify-center font-bold text-white">
+                  <p className="mb-2 flex justify-center font-bold  text-black">
                     {" "}
                     See my recommendations
                   </p>
@@ -1148,7 +1148,7 @@ const ProfileView = () => {
               </div>
               <div className="mb-24 p-2 max-[1221px]:mx-auto ">
                 <p className="flex">Select Language</p>
-                <button className="flex justify-between w-60 border p-1 rounded-md bg-[rgb(29,34,38)]">
+                <button className="flex justify-between w-60 border p-1 rounded-md  bg-slate-100">
                   <div>English (English)</div>
                   <div>
                     <i className="fa-solid fa-caret-down" />

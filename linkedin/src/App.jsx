@@ -8,6 +8,7 @@ import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { signIn } from "./App/user-slice";
 import ProfileView from "./Components/ProfileView";
+import Invitation from "./Components/Invitation";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
           }
         />
         <Route path="/profile/*" element={<ProfileView />} />
+        <Route path="/connections/*" element={<Invitation />} />
       </Routes>
     </div>
   );
