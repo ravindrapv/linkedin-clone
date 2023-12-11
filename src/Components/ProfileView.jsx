@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { db } from "../firebase";
-import { doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import { updateProfile } from "../App/user-slice";
 import Header from "./Hedader";
@@ -118,59 +118,97 @@ const ProfileView = () => {
   const [newEndDate, setNewEndDate] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const userDocRef = doc(db, "users", userId || user?.uid);
-        const userDocSnap = await getDoc(userDocRef);
+  const fetchUserData = async () => {
+    try {
+      const userDocRef = doc(db, "users", userId || user?.uid);
+      const userDocSnap = await getDoc(userDocRef);
 
-        if (userDocSnap.exists()) {
-          const userData = userDocSnap.data();
-          setUserData(userData);
-          dispatch(updateProfile(userData));
-        } else {
-          setError("User document does not exist.");
-        }
-      } catch (error) {
-        console.error("Error fetching user data from Firebase", error);
-        setError("Error fetching user data from Firebase");
-      } finally {
-        setLoading(false);
+      if (userDocSnap.exists()) {
+        const userData = userDocSnap.data();
+        setUserData(userData);
+        dispatch(updateProfile(userData));
+      } else {
+        setError("User document does not exist.");
       }
-    };
+    } catch (error) {
+      console.error("Error fetching user data from Firebase", error);
+      setError("Error fetching user data from Firebase");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchUserData();
   }, [dispatch, userId, user]);
 
+  // const handleAddEmploymentDetail = async () => {
+  //   if (
+  //     newOrganization &&
+  //     newTitle &&
+  //     newDescription &&
+  //     newStartDate &&
+  //     newEndDate
+  //   ) {
+  //     try {
+  //       const userDocRef = doc(db, "users", userId || user?.uid);
+  //       await updateDoc(userDocRef, {
+  //         employmentDetails: arrayUnion({
+  //           organization: newOrganization,
+  //           title: newTitle,
+  //           description: newDescription,
+  //           startDate: newStartDate,
+  //           endDate: newEndDate,
+  //         }),
+  //       });
+  //       setNewOrganization("");
+  //       setNewTitle("");
+  //       setNewDescription("");
+  //       setNewStartDate("");
+  //       setNewEndDate("");
+  //       setIsEditing(false);
+  //       setIsPopupOpen(false);
+  //     } catch (error) {
+  //       console.error("Error updating employment details", error);
+  //     }
+  //   }
+  // };
+
   const handleAddEmploymentDetail = async () => {
-    if (
-      newOrganization &&
-      newTitle &&
-      newDescription &&
-      newStartDate &&
-      newEndDate
-    ) {
-      try {
-        const userDocRef = doc(db, "users", userId || user?.uid);
-        await updateDoc(userDocRef, {
-          employmentDetails: arrayUnion({
-            organization: newOrganization,
-            title: newTitle,
-            description: newDescription,
-            startDate: newStartDate,
-            endDate: newEndDate,
-          }),
-        });
-        setNewOrganization("");
-        setNewTitle("");
-        setNewDescription("");
-        setNewStartDate("");
-        setNewEndDate("");
-        setIsEditing(false);
-        setIsPopupOpen(false);
-      } catch (error) {
-        console.error("Error updating employment details", error);
+    try {
+      const userDocRef = doc(db, "users", userId || user?.uid);
+
+      // Check if employmentDetails field exists
+      const userDocSnap = await getDoc(userDocRef);
+      const userData = userDocSnap.data();
+
+      if (!userData.employmentDetails) {
+        // If employmentDetails doesn't exist, create it as an empty array
+        await setDoc(userDocRef, { employmentDetails: [] }, { merge: true });
       }
+
+      // Update employmentDetails using arrayUnion
+      await updateDoc(userDocRef, {
+        employmentDetails: arrayUnion({
+          organization: newOrganization,
+          title: newTitle,
+          description: newDescription,
+          startDate: newStartDate,
+          endDate: newEndDate,
+        }),
+      });
+
+      // Reset form fields and close the popup
+      setNewOrganization("");
+      setNewTitle("");
+      setNewDescription("");
+      setNewStartDate("");
+      setNewEndDate("");
+      setIsEditing(false);
+      setIsPopupOpen(false);
+      fetchUserData();
+    } catch (error) {
+      console.error("Error updating employment details", error);
     }
   };
 
@@ -218,6 +256,7 @@ const ProfileView = () => {
         setEditedStartDate("");
         setEditedEndDate("");
         setIsPopupOpen(false);
+        fetchUserData();
       } catch (error) {
         console.error("Error updating employment details", error);
       }
@@ -872,6 +911,18 @@ const ProfileView = () => {
                     <button
                       onClick={() => handleEditClick(employmentDetails.length)}
                     ></button>
+                  )}
+                  {isEditing ? (
+                    <div>
+                      <SaveButton onClick={handleSaveEdit}>Save</SaveButton>
+                      <CancelButton onClick={handleCancelEdit}>
+                        Cancel
+                      </CancelButton>
+                    </div>
+                  ) : (
+                    <SaveButton onClick={handleAddEmploymentDetail}>
+                      Add
+                    </SaveButton>
                   )}
                 </div>
                 <div>

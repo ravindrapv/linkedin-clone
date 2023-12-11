@@ -34,7 +34,7 @@ function App() {
             </>
           }
         />
-        <Route path="/profile/*" element={<ProfileView />} />
+        <Route path="/profile/:userId" element={<ProfileView />} />
         <Route path="/connections/*" element={<Connection />} />
         <Route path="/Invitation/*" element={<Invitation />} />
       </Routes>
