@@ -988,7 +988,7 @@ const ProfileView = () => {
                           className="w-6 h-6"
                         />
                         <p className="ml-2  text-black text-[14px]">
-                          Marwari college ranchi
+                          tumkur ,karnataka
                         </p>
                       </div>
                     </div>
@@ -1006,7 +1006,7 @@ const ProfileView = () => {
                           className="w-6 h-6"
                         />
                         <p className="ml-2  text-black text-[14px]">
-                          Marwari college ranchi
+                          tumkur ,karnataka
                         </p>
                       </div>
                     </div>
@@ -1024,65 +1024,13 @@ const ProfileView = () => {
                           alt=""
                         />
                         <p className="ml-2  text-black text-[14px]">
-                          Marwari college ranchi
+                          tumkur ,karnataka
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
                 {/* grid slider 3 */}
-                <div className="col-[6_/_span_2] row-[5_/_span_2]  bg-slate-100 rounded-md w-[374px] max-[1060px]:w-[300px] max-[768px]:col-span-8 max-[768px]:row-[7_/_span_1]  max-[768px]:w-full">
-                  <div className="mt-5 ml-5 mr-14">
-                    <h2 className=" text-black">
-                      <i className="fa-brands fa-linkedin" />
-                      <span className="ml-2 font-semibold">LEARNING</span>
-                    </h2>
-                    <p className=" text-black font-semibold mt-2">
-                      Add new skills with these courses, free for 24 hours
-                    </p>
-                  </div>
-                  {/* slider-3-box-1 */}
-                  <div className="flex mt-5 mx-6">
-                    <img
-                      src="https://media.licdn.com/dms/image/C4E0DAQGLB7B8YW2Fmg/learning-public-crop_60_100/0/1611610348863?e=1688882400&v=beta&t=LV0KRd4KwAN7SdoFNMA2Gjdc1MnriM51OSdXbuSUPeo"
-                      alt=""
-                      className="w-[100px] h-[60px]"
-                    />
-                    <p className="w-40 overflow-hidden text-ellipsis whitespace-nowrap ml-3  text-black font-medium">
-                      Create a Quick, Clean, <br /> and Cheap Website with
-                    </p>
-                  </div>
-                  <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto mb-4 mt-4" />
-                  {/* slider-3-box-2 */}
-                  <div className="flex mt-5 mx-6">
-                    <img
-                      src="https://media.licdn.com/dms/image/C4D0DAQHG3oWZOpVl0Q/learning-public-crop_60_100/0/1605130201130?e=1688882400&v=beta&t=H5-bDZbiXpmbC0gAXrNrh_9CfpGNvSjkGSRnrVemniw"
-                      alt=""
-                      className="w-[100px] h-[60px]"
-                    />
-                    <p className="w-40 overflow-hidden text-ellipsis whitespace-nowrap ml-3  text-black font-medium">
-                      Creating flowcharts for <br />
-                      Beginners
-                    </p>
-                  </div>
-                  <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto mb-4 mt-4" />
-                  {/* slider-3-box-3 */}
-                  <div className="flex mt-5 mx-6">
-                    <img
-                      src="https://media.licdn.com/dms/image/C4E0DAQGWqNJbTO18sA/learning-public-crop_60_100/0/1601574383805?e=1688882400&v=beta&t=NdikUdvynP9GIojFcKMDrY_eGWMqgZoe65e8t3-OJMY"
-                      alt=""
-                      className="w-[100px] h-[60px]"
-                    />
-                    <p className="w-40 overflow-hidden text-ellipsis whitespace-nowrap ml-3  text-black font-medium">
-                      CSS: print style sheets
-                    </p>
-                  </div>
-                  <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto mb-4 mt-4" />
-                  <p className="mb-2 flex justify-center font-bold  text-black">
-                    {" "}
-                    See my recommendations
-                  </p>
-                </div>
               </div>
             </section>
             {/* Grid section end */}

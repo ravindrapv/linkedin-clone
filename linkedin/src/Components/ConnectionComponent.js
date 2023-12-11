@@ -1,6 +1,6 @@
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { auth, database } from "../firebase";
+import { auth, db } from "../firebase";
 import {
   Avatar,
   Button,
@@ -10,6 +10,7 @@ import {
   Paper,
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
+import Header from "./Hedader";
 
 function Connection() {
   const location = useLocation();
@@ -19,7 +20,7 @@ function Connection() {
   const [userData, setUserData] = useState([]);
 
   const getUsers = async () => {
-    const userRef = collection(database, "Users");
+    const userRef = collection(db, "Users");
     try {
       const data = await getDocs(userRef);
       const filteredData = data.docs.map((doc) => ({
@@ -33,7 +34,7 @@ function Connection() {
   };
 
   const sendRequest = async (userId) => {
-    const requestDoc = doc(database, "Users", `${userId}`);
+    const requestDoc = doc(db, "Users", `${userId}`);
     const connectRef = doc(requestDoc, "RequestIn", `${auth.currentUser?.uid}`);
     try {
       await setDoc(connectRef, {
@@ -53,36 +54,39 @@ function Connection() {
   }, []);
 
   return (
-    <div
-      style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
-    >
-      {userData
-        .filter((user) => user.id !== auth.currentUser?.uid)
-        .map((otherUser) => {
-          return (
-            <>
-              <Paper>
-                <List>
-                  <ListItem>
-                    <Avatar src={otherUser.profile_image} />
-                    <ListItemText
-                      primary={otherUser.username}
-                      secondary={otherUser.designation}
-                    />
-                    <Button
-                      onClick={() => sendRequest(otherUser.id)}
-                      variant="outlined"
-                      size="small"
-                    >
-                      Connect
-                    </Button>
-                  </ListItem>
-                </List>
-              </Paper>
-            </>
-          );
-        })}
-    </div>
+    <>
+      <Header />
+      <div
+        style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
+      >
+        {userData
+          .filter((user) => user.id !== auth.currentUser?.uid)
+          .map((otherUser) => {
+            return (
+              <>
+                <Paper>
+                  <List>
+                    <ListItem>
+                      <Avatar src={otherUser.profile_image} />
+                      <ListItemText
+                        primary={otherUser.username}
+                        secondary={otherUser.designation}
+                      />
+                      <Button
+                        onClick={() => sendRequest(otherUser.id)}
+                        variant="outlined"
+                        size="small"
+                      >
+                        Connect
+                      </Button>
+                    </ListItem>
+                  </List>
+                </Paper>
+              </>
+            );
+          })}
+      </div>
+    </>
   );
 }
 

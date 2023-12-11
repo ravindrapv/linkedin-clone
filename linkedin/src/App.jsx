@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { signIn } from "./App/user-slice";
 import ProfileView from "./Components/ProfileView";
 import Invitation from "./Components/Invitation";
+import Connection from "./Components/ConnectionComponent";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +35,8 @@ function App() {
           }
         />
         <Route path="/profile/*" element={<ProfileView />} />
-        <Route path="/connections/*" element={<Invitation />} />
+        <Route path="/connections/*" element={<Connection />} />
+        <Route path="/Invitation/*" element={<Invitation />} />
       </Routes>
     </div>
   );
