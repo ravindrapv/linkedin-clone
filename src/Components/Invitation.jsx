@@ -23,7 +23,7 @@ function Invitation() {
   const [user, setUser] = useState([]);
 
   const showrequest = async () => {
-    const requestRef = doc(db, "Users", `${auth.currentUser?.uid}`);
+    const requestRef = doc(db, "users", `${auth.currentUser?.uid}`);
     const requestInRef = collection(requestRef, "RequestIn");
     try {
       const data = await getDocs(requestInRef);
@@ -38,7 +38,7 @@ function Invitation() {
   };
 
   const deleteReq = async (user) => {
-    const userDoc = doc(db, "Users", `${auth.currentUser?.uid}`);
+    const userDoc = doc(db, "users", `${auth.currentUser?.uid}`);
     const delDocument = doc(userDoc, "RequestIn", `${user.id}`);
     try {
       await deleteDoc(delDocument);
@@ -48,7 +48,7 @@ function Invitation() {
   };
 
   const addConnect = async (user) => {
-    const acceptDoc = doc(db, "Users", `${user.id}`);
+    const acceptDoc = doc(db, "users", `${user.id}`);
     const connectionDoc = doc(
       acceptDoc,
       "RequestIn",
@@ -56,9 +56,9 @@ function Invitation() {
     );
     try {
       await setDoc(connectionDoc, {
-        designation: location.state.designation,
-        username: location.state.username,
-        profile_image: location.state.profile_img,
+        username: location.state?.username,
+        designation: location.state?.designation,
+        profile_image: location.state?.photoURL,
         status: "connected",
       });
     } catch (err) {
@@ -67,13 +67,13 @@ function Invitation() {
   };
 
   const acceptReq = async (user) => {
-    const acceptDoc = doc(db, "Users", `${auth.currentUser?.uid}`);
+    const acceptDoc = doc(db, "users", `${auth.currentUser?.uid}`);
     const connectionDoc = doc(acceptDoc, "RequestIn", `${user.id}`);
     try {
       await setDoc(connectionDoc, {
-        designation: user.designation,
-        username: user.username,
-        profile_image: user.profile_image,
+        username: location.state?.username,
+        designation: location.state?.designation,
+        profile_image: location.state?.photoURL,
         id: user.id,
         status: "connected",
       });

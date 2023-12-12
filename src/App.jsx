@@ -10,6 +10,7 @@ import { signIn } from "./App/user-slice";
 import ProfileView from "./Components/ProfileView";
 import Invitation from "./Components/Invitation";
 import Connection from "./Components/ConnectionComponent";
+import Network from "./Components/Network";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +37,8 @@ function App() {
         />
         <Route path="/profile/:userId" element={<ProfileView />} />
         <Route path="/Connection" element={<Connection />} />
-        <Route path="/Invitation/*" element={<Invitation />} />
+        <Route path="/Invitation" element={<Invitation />} />
+        <Route path="/Network" element={<Network />} />
       </Routes>
     </div>
   );

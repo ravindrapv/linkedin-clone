@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { db } from "../firebase";
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
-import { useParams, NavLink, Navigate } from "react-router-dom";
+import { useParams, NavLink, Navigate, useNavigate } from "react-router-dom";
 import { updateProfile } from "../App/user-slice";
 import Header from "./Hedader";
 
@@ -98,6 +98,7 @@ const PopupContainer = styled.div`
 
 const ProfileView = () => {
   const { userId } = useParams();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
 
@@ -285,6 +286,9 @@ const ProfileView = () => {
 
   const { description, bio, employmentDetails } = userData;
   const { displayName, photoURL } = user;
+
+  console.log(userData);
+  console.log(user);
 
   return (
     <>
@@ -583,9 +587,28 @@ const ProfileView = () => {
                             Contact info
                           </span>
                         </p>
-                        <NavLink to="/connection">
+                        <NavLink
+                          to="/connection"
+                          state={{
+                            username: JSON.stringify(user.displayName),
+                            photoURL: JSON.stringify(user.photoURL),
+                            designation: JSON.stringify(userData.description),
+                          }}
+                        >
                           <p className="text-blue-600 font-medium max-[990px]:text-[13px]">
                             connection
+                          </p>
+                        </NavLink>
+                        <NavLink
+                          to="/Invitation"
+                          state={{
+                            username: JSON.stringify(user.displayName),
+                            photoURL: JSON.stringify(user.photoURL),
+                            designation: JSON.stringify(userData.description),
+                          }}
+                        >
+                          <p className="text-blue-600 font-medium max-[990px]:text-[13px]">
+                            Invitation
                           </p>
                         </NavLink>
                         <div className="mt-2">

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { updateProfile } from "../App/user-slice";
 import { db } from "../firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, NavLink } from "react-router-dom";
 import ProfileView from "./ProfileView";
 
 const Leftside = () => {
@@ -94,9 +94,7 @@ const Leftside = () => {
           <CardBackground />
           <a href="/feed">
             <Photo src={user?.photoURL ? user.photoURL : "/Images/photo.svg"} />
-            <CustomLink to="/feed">
-              Welcome, {user && user.displayName}
-            </CustomLink>
+            <CustomLink to="/feed">{user && user.displayName}</CustomLink>
           </a>
           {isDataLoaded && (
             <>
@@ -138,7 +136,9 @@ const Leftside = () => {
         <Widget>
           <a href="/feed">
             <div>
-              <span>Connections</span>
+              <span>
+                <NavLink to={"/Network"}>connections</NavLink>
+              </span>
               <span>Grow your network</span>
             </div>
             <p>130</p>

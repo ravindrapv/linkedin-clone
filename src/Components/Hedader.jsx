@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Profile from "./Profile";
 
@@ -27,17 +27,15 @@ const Header = (props) => {
         </Search>
         <Nav>
           <NavListWrap>
-            <NavList className="active">
+            <NavLink to={"/"} className="active">
               <img src="/Images/nav-home.svg" alt="" />
               <span>Home</span>
-            </NavList>
+            </NavLink>
 
-            <NavList>
-              <a href="/connections">
-                <img src="/Images/nav-network.svg" alt="" />
-                <span>My Network</span>
-              </a>
-            </NavList>
+            <NavLink to={"/Invitation"}>
+              <img src="/Images/nav-network.svg" alt="" />
+              <span>My Network</span>
+            </NavLink>
 
             <NavList>
               <img src="/Images/nav-jobs.svg" alt="" />
@@ -194,6 +192,7 @@ const NavListWrap = styled.ul`
   }
 `;
 /*___________________________________________________*/
+
 const NavList = styled.li`
   justify-content: center;
   display: flex;

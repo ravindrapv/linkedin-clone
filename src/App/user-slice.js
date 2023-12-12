@@ -32,6 +32,7 @@ export const updateProfile = createAsyncThunk(
 
         await collectionRef.doc(user.uid).set(
           {
+            ...user,
             description: newDescription,
             bio: newBio,
           },
