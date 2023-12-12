@@ -1,0 +1,20 @@
+# Node.js
+node_modules/
+
+# Compiled output
+dist/
+build/
+*.log
+
+# Dependency directories
+/.pnp
+.pnp.js
+
+# dotenv environment variable file
+.env
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db

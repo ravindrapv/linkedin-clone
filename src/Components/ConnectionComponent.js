@@ -34,6 +34,7 @@ function Connection() {
   };
 
   const sendRequest = async (userId) => {
+    const requestDoc = collection(db, "requests");
     const connectRef = doc(requestDoc, "RequestIn", `${auth.currentUser?.uid}`);
     try {
       const currentUserData = {
