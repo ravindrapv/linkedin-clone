@@ -13,20 +13,33 @@ const Leftside = () => {
   const navigate = useNavigate();
 
   const [isEditing, setIsEditing] = useState(false);
+  const [newName, setNewName] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [newBio, setNewBio] = useState("");
   const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   useEffect(() => {
-    if (user) {
+    if (user && !isDataLoaded) {
       const fetchData = async () => {
         try {
           const userDocRef = doc(db, "users", user.uid);
           const userDocSnap = await getDoc(userDocRef);
-          if (userDocSnap.exists()) {
-            const userData = userDocSnap.data();
-            setNewDescription(userData.description || "");
-            setNewBio(userData.bio || "");
+
+          if (!userDocSnap.exists()) {
+            openEditModal();
+            return;
+          }
+
+          const userData = userDocSnap.data();
+          setNewName(userData.name || ""); // Set the name
+          setNewDescription(userData.description || "");
+          setNewBio(userData.bio || "");
+          if (
+            !userData.name.trim() &&
+            !userData.description.trim() &&
+            !userData.bio.trim()
+          ) {
+            openEditModal();
           }
         } catch (error) {
           console.error("Error fetching user data from Firebase", error);
@@ -37,7 +50,7 @@ const Leftside = () => {
 
       fetchData();
     }
-  }, [user]);
+  }, [user, isDataLoaded]);
 
   const openEditModal = () => {
     setIsEditing(true);
@@ -52,13 +65,16 @@ const Leftside = () => {
   };
 
   const handleSaveClick = async () => {
-    dispatch(updateProfile({ description: newDescription, bio: newBio }));
+    dispatch(
+      updateProfile({ name: newName, description: newDescription, bio: newBio })
+    );
 
     try {
       const userDocRef = doc(db, "users", user.uid);
       await setDoc(
         userDocRef,
         {
+          name: newName,
           description: newDescription,
           bio: newBio,
         },
@@ -86,6 +102,12 @@ const Leftside = () => {
             <>
               {isEditing ? (
                 <EditProfileForm>
+                  <label>Name:</label>
+                  <input
+                    type="text"
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                  />
                   <label>Description:</label>
                   <textarea
                     value={newDescription}
@@ -140,6 +162,12 @@ const Leftside = () => {
               </ModalCloseButton>
             </ModalHeader>
             <EditProfileForm>
+              <label>Name:</label>
+              <input
+                type="text"
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+              />
               <label>Description:</label>
               <textarea
                 value={newDescription}

@@ -35,7 +35,7 @@ function App() {
           }
         />
         <Route path="/profile/:userId" element={<ProfileView />} />
-        <Route path="/connections/*" element={<Connection />} />
+        <Route path="/Connection" element={<Connection />} />
         <Route path="/Invitation/*" element={<Invitation />} />
       </Routes>
     </div>

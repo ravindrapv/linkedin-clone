@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { db } from "../firebase";
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink, Navigate } from "react-router-dom";
 import { updateProfile } from "../App/user-slice";
 import Header from "./Hedader";
 
@@ -177,28 +177,25 @@ const ProfileView = () => {
   const handleAddEmploymentDetail = async () => {
     try {
       const userDocRef = doc(db, "users", userId || user?.uid);
-
-      // Check if employmentDetails field exists
       const userDocSnap = await getDoc(userDocRef);
       const userData = userDocSnap.data();
 
       if (!userData.employmentDetails) {
-        // If employmentDetails doesn't exist, create it as an empty array
         await setDoc(userDocRef, { employmentDetails: [] }, { merge: true });
       }
 
-      // Update employmentDetails using arrayUnion
+      const endDateValue = newEndDate || "Currently Employed";
+
       await updateDoc(userDocRef, {
         employmentDetails: arrayUnion({
           organization: newOrganization,
           title: newTitle,
           description: newDescription,
           startDate: newStartDate,
-          endDate: newEndDate,
+          endDate: endDateValue,
         }),
       });
 
-      // Reset form fields and close the popup
       setNewOrganization("");
       setNewTitle("");
       setNewDescription("");
@@ -586,9 +583,11 @@ const ProfileView = () => {
                             Contact info
                           </span>
                         </p>
-                        <p className="text-blue-600 font-medium max-[990px]:text-[13px]">
-                          161 connction
-                        </p>
+                        <NavLink to="/connection">
+                          <p className="text-blue-600 font-medium max-[990px]:text-[13px]">
+                            connection
+                          </p>
+                        </NavLink>
                         <div className="mt-2">
                           <button className="bg-blue-500 rounded-l-full rounded-r-full w-20 h-8">
                             Open to
@@ -842,23 +841,16 @@ const ProfileView = () => {
                   {employmentDetails &&
                     employmentDetails.map((detail, index) => (
                       <EmploymentDetail key={index}>
-                        <p>
-                          <b>Organization :</b>
-                          {detail.organization}
-                        </p>
-                        <p>
-                          <b>Title:</b> {detail.title}
-                        </p>
-                        <p>
-                          <b>Description:</b> {detail.description}
-                        </p>
-                        <p>
-                          <b>Start Date:</b> {detail.startDate}
-                        </p>
-                        <p>
-                          <b>End Date:</b>
-                          {detail.endDate}
-                        </p>
+                        <p className="  text-xl">{detail.organization}</p>
+                        <p className=" font-bold text-xl">{detail.title}</p>
+                        <p className=" text-gray-500">{detail.description}</p>
+                        <div className=" flex">
+                          <p className=" text-gray-700">
+                            {" "}
+                            {detail.startDate}-- to
+                          </p>
+                          <p className=" text-gray-700"> --{detail.endDate}</p>
+                        </div>
                         <button
                           className="editButton"
                           onClick={() => handleEditClick(index)}
@@ -867,22 +859,26 @@ const ProfileView = () => {
                         </button>
                       </EmploymentDetail>
                     ))}
+
                   {isEditing && editedIndex !== null && (
                     <EditForm>
                       <input
                         type="text"
+                        required
                         placeholder="Organization Name"
                         value={editedOrganization}
                         onChange={(e) => setEditedOrganization(e.target.value)}
                       />
                       <input
                         type="text"
+                        required
                         placeholder="Title"
                         value={editedTitle}
                         onChange={(e) => setEditedTitle(e.target.value)}
                       />
                       <input
                         type="text"
+                        required
                         placeholder="Description"
                         value={editedDescription}
                         onChange={(e) => setEditedDescription(e.target.value)}
@@ -909,20 +905,27 @@ const ProfileView = () => {
                   )}
                   {!isEditing && (
                     <button
-                      onClick={() => handleEditClick(employmentDetails.length)}
-                    ></button>
+                      className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      onClick={() => setIsPopupOpen(true)}
+                    >
+                      {" "}
+                      Add new
+                    </button>
                   )}
-                  {isEditing ? (
-                    <div>
-                      <SaveButton onClick={handleSaveEdit}>Save</SaveButton>
-                      <CancelButton onClick={handleCancelEdit}>
-                        Cancel
-                      </CancelButton>
-                    </div>
-                  ) : (
-                    <SaveButton onClick={handleAddEmploymentDetail}>
-                      Add
-                    </SaveButton>
+                  {isPopupOpen && (
+                    <Popup onClose={() => setIsPopupOpen(false)}>
+                      <label>Organization Name:</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Organization Name"
+                        value={newOrganization}
+                        onChange={(e) => setNewOrganization(e.target.value)}
+                      />
+                      <SaveButton onClick={handleAddEmploymentDetail}>
+                        Add
+                      </SaveButton>
+                    </Popup>
                   )}
                 </div>
                 <div>
@@ -932,6 +935,7 @@ const ProfileView = () => {
                       <label>Organization Name:</label>
                       <input
                         type="text"
+                        required="true"
                         placeholder="Organization Name"
                         value={isEditing ? editedOrganization : newOrganization}
                         onChange={(e) =>
@@ -943,6 +947,7 @@ const ProfileView = () => {
                       <label>Title:</label>
                       <input
                         type="text"
+                        required
                         placeholder="Title"
                         value={isEditing ? editedTitle : newTitle}
                         onChange={(e) =>
@@ -954,6 +959,7 @@ const ProfileView = () => {
                       <label>Description:</label>
                       <input
                         type="text"
+                        required
                         placeholder="Description"
                         value={isEditing ? editedDescription : newDescription}
                         onChange={(e) =>
@@ -965,6 +971,7 @@ const ProfileView = () => {
                       <label>Start Date:</label>
                       <input
                         type="date"
+                        required
                         placeholder="Start Date"
                         value={isEditing ? editedStartDate : newStartDate}
                         onChange={(e) =>
@@ -983,23 +990,28 @@ const ProfileView = () => {
                             : setNewEndDate(e.target.value)
                         }
                       />
-                      {isEditing ? (
-                        <div>
-                          <SaveButton onClick={handleSaveEdit}>Save</SaveButton>
-                          <CancelButton onClick={handleCancelEdit}>
-                            Cancel
-                          </CancelButton>
-                        </div>
-                      ) : (
-                        <SaveButton onClick={handleAddEmploymentDetail}>
-                          Add
-                        </SaveButton>
-                      )}
+                      <div>
+                        {isEditing ? (
+                          <div>
+                            <SaveButton onClick={handleSaveEdit}>
+                              Save
+                            </SaveButton>
+                            <CancelButton onClick={handleCancelEdit}>
+                              Cancel
+                            </CancelButton>
+                          </div>
+                        ) : (
+                          <SaveButton onClick={handleAddEmploymentDetail}>
+                            Add
+                          </SaveButton>
+                        )}
+                      </div>
                     </Popup>
                   )}
+                  {/* ... existing code ... */}
                 </div>
                 {/* grid main box 4 */}
-                <div className=" bg-slate-100 col-[2_/_span_4] row-span-5 rounded-md max-[768px]:col-span-8 max-[768px]:row-[5_/_span_1]">
+                {/* <div className=" bg-slate-100 col-[2_/_span_4] row-span-5 rounded-md max-[768px]:col-span-8 max-[768px]:row-[5_/_span_1]">
                   <div className="flex justify-between mt-5 mx-4 mb-6">
                     <div className=" text-black font-bold text-xl">
                       <h2>Skills</h2>
@@ -1080,7 +1092,7 @@ const ProfileView = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* grid slider 3 */}
               </div>
             </section>
