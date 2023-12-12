@@ -56,9 +56,9 @@ function Invitation() {
     );
     try {
       await setDoc(connectionDoc, {
-        username: location.state?.username,
-        designation: location.state?.designation,
-        profile_image: location.state?.photoURL,
+        designation: location.state.designation,
+        username: location.state.username,
+        profile_image: location.state.profile_img,
         status: "connected",
       });
     } catch (err) {
@@ -71,9 +71,9 @@ function Invitation() {
     const connectionDoc = doc(acceptDoc, "RequestIn", `${user.id}`);
     try {
       await setDoc(connectionDoc, {
-        username: location.state?.username,
-        designation: location.state?.designation,
-        profile_image: location.state?.photoURL,
+        designation: user.designation,
+        username: user.username,
+        profile_image: user.profile_image,
         id: user.id,
         status: "connected",
       });

@@ -43,7 +43,7 @@ function Connection() {
     try {
       await setDoc(connectRef, {
         username: location.state?.username,
-        designation: location.state?.designation,
+        designation: location.state?.description,
         profile_image: location.state?.photoURL,
         id: auth.currentUser?.uid,
         status: "pending",

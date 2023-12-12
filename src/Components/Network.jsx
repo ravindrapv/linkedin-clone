@@ -60,7 +60,7 @@ function Network() {
                       profile_image: eachUser.profile_image,
                     }}
                   >
-                    <Button variant="outlined">Message</Button>
+                    <Button variant="outlined">connected</Button>
                   </Link>
                 </ListItem>
               </List>
