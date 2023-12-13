@@ -34,7 +34,9 @@ function Network() {
 
   useEffect(() => {
     showrequest();
-  }, [user]);
+  }, []);
+
+  console.log(user);
 
   return (
     <>
@@ -47,7 +49,7 @@ function Network() {
           .filter((user) => user.status === "connected")
           .map((eachUser) => {
             return (
-              <Paper>
+              <Paper key={user.id} style={{ marginBottom: "10px" }}>
                 <List>
                   <ListItem>
                     <Avatar src={eachUser.profile_image} />

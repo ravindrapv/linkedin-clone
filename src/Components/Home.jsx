@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Leftside from "./Leftside";
 import Main from "./Main";
-// import Rightside from "./Rightside";
+import Rightside from "./Rightside";
 
 const Home = (props) => {
   document.title = "Feed | Linkedin";
@@ -10,7 +10,7 @@ const Home = (props) => {
       <Layout>
         <Leftside />
         <Main />
-        {/* <Rightside /> */}
+        <Rightside />
       </Layout>
     </Container>
   );

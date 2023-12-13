@@ -27,15 +27,19 @@ const Header = (props) => {
         </Search>
         <Nav>
           <NavListWrap>
-            <NavLink to={"/"} className="active">
-              <img src="/Images/nav-home.svg" alt="" />
-              <span>Home</span>
-            </NavLink>
+            <NavList>
+              <NavLink to={"/"} className="active">
+                <img src="/Images/nav-home.svg" alt="" />
+                <span>Home</span>
+              </NavLink>
+            </NavList>
 
-            <NavLink to={"/Invitation"}>
-              <img src="/Images/nav-network.svg" alt="" />
-              <span>My Network</span>
-            </NavLink>
+            <NavList>
+              <NavLink to={"/Invitation"}>
+                <img src="/Images/nav-network.svg" alt="" />
+                <span>My Network</span>
+              </NavLink>
+            </NavList>
 
             <NavList>
               <img src="/Images/nav-jobs.svg" alt="" />

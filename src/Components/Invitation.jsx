@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Button,
@@ -5,6 +6,7 @@ import {
   ListItem,
   ListItemText,
   Paper,
+  Tooltip,
 } from "@mui/material";
 import {
   collection,
@@ -13,7 +15,6 @@ import {
   getDocs,
   setDoc,
 } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { useLocation } from "react-router-dom";
 import Header from "./Hedader";
@@ -22,6 +23,7 @@ function Invitation() {
   const location = useLocation();
 
   const [user, setUser] = useState([]);
+  const [connected, setConnected] = useState(false);
 
   const showrequest = async () => {
     const requestRef = doc(db, "users", `${auth.currentUser?.uid}`);
@@ -79,19 +81,21 @@ function Invitation() {
         status: "connected",
       });
       addConnect(user);
+      setConnected(true);
     } catch (err) {
-      console.eroor(err);
+      console.error(err);
     }
   };
 
   useEffect(() => {
     showrequest();
+    setConnected(false);
   }, [user]);
 
   return (
     <>
       <Header />
-      <div className=" w-full h-6"></div>
+      <div className="w-full h-6"></div>
       <div
         style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
       >
@@ -99,10 +103,12 @@ function Invitation() {
           .filter((user) => user.status === "pending")
           .map((eachUser) => {
             return (
-              <Paper>
+              <Paper key={eachUser.id}>
                 <List>
                   <ListItem>
-                    <Avatar src={eachUser.profile_image} />
+                    <Tooltip title="Connected" open={connected}>
+                      <Avatar src={eachUser.profile_image} />
+                    </Tooltip>
                     <ListItemText
                       primary={eachUser.username}
                       secondary={eachUser.designation}

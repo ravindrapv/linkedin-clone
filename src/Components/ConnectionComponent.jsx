@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import {
@@ -64,9 +64,7 @@ function Connection() {
     <>
       <Header />
       <div className=" w-full h-6"></div>
-      <div
-        style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
-      >
+      <div>
         <List>
           {userData
             .filter((user) => user.id !== auth.currentUser?.uid)

@@ -51,7 +51,8 @@ const Leftside = () => {
       fetchData();
     }
   }, [user, isDataLoaded]);
-
+  console.log(user);
+  console.log(isDataLoaded);
   const openEditModal = () => {
     setIsEditing(true);
   };
@@ -141,6 +142,7 @@ const Leftside = () => {
               </span>
               <span>Grow your network</span>
             </div>
+            <p>130</p>
           </a>
         </Widget>
 
@@ -177,8 +179,10 @@ const Leftside = () => {
                 value={newBio}
                 onChange={(e) => setNewBio(e.target.value)}
               />
-              <SaveButton onClick={handleSaveClick}>Save</SaveButton>
-              <CancelButton onClick={closeEditModal}>Cancel</CancelButton>
+              <div className=" flex gap-4">
+                <SaveButton onClick={handleSaveClick}>Save</SaveButton>
+                <CancelButton onClick={closeEditModal}>Cancel</CancelButton>
+              </div>
             </EditProfileForm>
           </ModalCard>
         </EditModal>
@@ -190,21 +194,31 @@ const Leftside = () => {
   );
 };
 
+// Refined styles inspired by LinkedIn
+
 const ViewProfileButton = styled.button`
   background-color: #fff;
   color: #0a66c2;
   border: 1px solid #0a66c2;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 12px 24px;
+  border-radius: 999px;
   cursor: pointer;
-  margin-top: 8px; // Adjust the margin as needed
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: #0a66c2;
+    color: #fff;
+  }
 `;
 
 const CustomLink = styled.div`
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.9);
-  font-weight: 600;
+  font-weight: 700;
 `;
 
 const Container = styled.div`
@@ -214,18 +228,18 @@ const Container = styled.div`
 const ArtCard = styled.div`
   text-align: center;
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   background-color: #fff;
-  border-radius: 5px;
-  transition: box-shadow 83ms;
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
   position: relative;
-  border: none;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const UserInfo = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 12px 12px 16px;
+  padding: 16px;
   word-wrap: break-word;
   word-break: break-word;
 `;
@@ -233,95 +247,116 @@ const UserInfo = styled.div`
 const CardBackground = styled.div`
   background: url("/Images/card-bg.svg");
   background-position: center;
-  background-size: 462px;
+  background-size: cover;
   height: 54px;
-  margin: -12px -12px 0;
+  margin: -16px -16px 0;
 `;
 
 const Photo = styled.img`
   box-shadow: none;
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   box-sizing: border-box;
   background-clip: content-box;
   background-color: white;
   background-position: center;
-  background-size: 60%;
+  background-size: cover;
   background-repeat: no-repeat;
   border: 2px solid white;
-  margin: -38px auto 12px;
+  margin: -48px auto 16px;
   border-radius: 50%;
-`;
-
-const Link = styled.div`
-  font-size: 16px;
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.9);
-  font-weight: 600;
 `;
 
 const EditProfileForm = styled.div`
   label {
     display: block;
     margin-bottom: 8px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
   }
 
+  input,
   textarea {
     width: 100%;
-    height: 80px;
+    padding: 12px;
     margin-bottom: 16px;
-    resize: vertical;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
   }
 `;
 
 const SaveButton = styled.button`
   background-color: #0a66c2;
   color: #fff;
-  padding: 8px 16px;
+  padding: 12px 24px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #004182;
+  }
 `;
 
 const CancelButton = styled.button`
   background-color: #ccc;
   color: #fff;
-  padding: 8px 16px;
+  padding: 12px 24px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
   margin-right: 8px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #999;
+  }
 `;
 
 const Description = styled.p`
-  margin-bottom: 8px;
-  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 12px;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
 `;
 
 const Bio = styled.p`
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
 `;
 
 const EditButton = styled.button`
   background-color: #fff;
   color: #0a66c2;
   border: 1px solid #0a66c2;
-  padding: 8px 16px;
+  padding: 12px 24px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #f2f8fc;
+  }
 `;
 
 const Widget = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding: 16px;
 
   & > a {
     text-decoration: none;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 4px 12px;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.08);
@@ -333,8 +368,8 @@ const Widget = styled.div`
       text-align: left;
 
       span {
-        font-size: 12px;
-        line-height: 1.333;
+        font-size: 14px;
+        line-height: 1.4;
 
         &:first-child {
           color: rgba(0, 0, 0, 0.6);
@@ -350,7 +385,7 @@ const Widget = styled.div`
 
   p {
     color: #0a66c2;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
   }
 `;
@@ -358,8 +393,8 @@ const Widget = styled.div`
 const Item = styled.a`
   border-color: rgba(0, 0, 0, 0.8);
   text-align: left;
-  padding: 12px;
-  font-size: 12px;
+  padding: 16px;
+  font-size: 14px;
   display: block;
 
   span {
@@ -370,42 +405,6 @@ const Item = styled.a`
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.08);
-  }
-`;
-
-const CommunityCard = styled(ArtCard)`
-  padding: 8px 0 0;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  position: sticky;
-  top: 75px;
-
-  a {
-    color: black;
-    padding: 4px 12px 4px 12px;
-    font-size: 12px;
-
-    &:hover {
-      color: #0a66c2;
-    }
-
-    span {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    &:last-child {
-      color: rgba(0, 0, 0, 0.6);
-      text-decoration: none;
-      border-top: 1px solid #d6cec2;
-      padding: 12px;
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.08);
-      }
-    }
   }
 `;
 
