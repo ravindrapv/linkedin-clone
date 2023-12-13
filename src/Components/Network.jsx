@@ -10,6 +10,7 @@ import {
   Paper,
 } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
+import Header from "./Hedader";
 
 function Network() {
   const location = useLocation();
@@ -36,38 +37,42 @@ function Network() {
   }, [user]);
 
   return (
-    <div
-      style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
-    >
-      {user
-        .filter((user) => user.status === "connected")
-        .map((eachUser) => {
-          return (
-            <Paper>
-              <List>
-                <ListItem>
-                  <Avatar src={eachUser.profile_image} />
-                  <ListItemText
-                    primary={eachUser.username}
-                    secondary={eachUser.designation}
-                  />
-                  <Link
-                    to="/message"
-                    state={{
-                      designation: location.state?.designation,
-                      username: eachUser.username,
-                      id: eachUser.id,
-                      profile_image: eachUser.profile_image,
-                    }}
-                  >
-                    <Button variant="outlined">connected</Button>
-                  </Link>
-                </ListItem>
-              </List>
-            </Paper>
-          );
-        })}
-    </div>
+    <>
+      <Header />
+      <div className=" w-full h-6"></div>
+      <div
+        style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
+      >
+        {user
+          .filter((user) => user.status === "connected")
+          .map((eachUser) => {
+            return (
+              <Paper>
+                <List>
+                  <ListItem>
+                    <Avatar src={eachUser.profile_image} />
+                    <ListItemText
+                      primary={eachUser.username}
+                      secondary={eachUser.designation}
+                    />
+                    <Link
+                      to="/"
+                      state={{
+                        designation: location.state?.designation,
+                        username: eachUser.username,
+                        id: eachUser.id,
+                        profile_image: eachUser.profile_image,
+                      }}
+                    >
+                      <Button variant="outlined">connected</Button>
+                    </Link>
+                  </ListItem>
+                </List>
+              </Paper>
+            );
+          })}
+      </div>
+    </>
   );
 }
 

@@ -10,6 +10,7 @@ import {
   Paper,
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
+import Header from "./Hedader";
 
 function Connection() {
   const location = useLocation();
@@ -43,7 +44,7 @@ function Connection() {
     try {
       await setDoc(connectRef, {
         username: location.state?.username,
-        designation: location.state?.description,
+        designation: location.state?.designation,
         profile_image: location.state?.photoURL,
         id: auth.currentUser?.uid,
         status: "pending",
@@ -60,32 +61,36 @@ function Connection() {
   console.log(userData);
 
   return (
-    <div
-      style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
-    >
-      <List>
-        {userData
-          .filter((user) => user.id !== auth.currentUser?.uid)
-          .map((otherUser) => (
-            <Paper key={otherUser.id} style={{ marginBottom: "10px" }}>
-              <ListItem>
-                <Avatar src={otherUser.profile_image} />
-                <ListItemText
-                  primary={otherUser.name}
-                  secondary={otherUser.description}
-                />
-                <Button
-                  onClick={() => sendRequest(otherUser.id)}
-                  variant="outlined"
-                  size="small"
-                >
-                  Connect
-                </Button>
-              </ListItem>
-            </Paper>
-          ))}
-      </List>
-    </div>
+    <>
+      <Header />
+      <div className=" w-full h-6"></div>
+      <div
+        style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
+      >
+        <List>
+          {userData
+            .filter((user) => user.id !== auth.currentUser?.uid)
+            .map((otherUser) => (
+              <Paper key={otherUser.id} style={{ marginBottom: "10px" }}>
+                <ListItem>
+                  <Avatar src={otherUser.profile_image} />
+                  <ListItemText
+                    primary={otherUser.name}
+                    secondary={otherUser.description}
+                  />
+                  <Button
+                    onClick={() => sendRequest(otherUser.id)}
+                    variant="outlined"
+                    size="small"
+                  >
+                    Connect
+                  </Button>
+                </ListItem>
+              </Paper>
+            ))}
+        </List>
+      </div>
+    </>
   );
 }
 

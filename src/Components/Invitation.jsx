@@ -16,6 +16,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { useLocation } from "react-router-dom";
+import Header from "./Hedader";
 
 function Invitation() {
   const location = useLocation();
@@ -88,42 +89,46 @@ function Invitation() {
   }, [user]);
 
   return (
-    <div
-      style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
-    >
-      {user
-        .filter((user) => user.status === "pending")
-        .map((eachUser) => {
-          return (
-            <Paper>
-              <List>
-                <ListItem>
-                  <Avatar src={eachUser.profile_image} />
-                  <ListItemText
-                    primary={eachUser.username}
-                    secondary={eachUser.designation}
-                  />
-                  <Button
-                    onClick={() => deleteReq(eachUser)}
-                    sx={{ color: "grey" }}
-                    size="small"
-                  >
-                    Ignore
-                  </Button>
-                  <Button
-                    onClick={() => acceptReq(eachUser)}
-                    sx={{ ml: "5px" }}
-                    variant="outlined"
-                    size="small"
-                  >
-                    Accept
-                  </Button>
-                </ListItem>
-              </List>
-            </Paper>
-          );
-        })}
-    </div>
+    <>
+      <Header />
+      <div className=" w-full h-6"></div>
+      <div
+        style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
+      >
+        {user
+          .filter((user) => user.status === "pending")
+          .map((eachUser) => {
+            return (
+              <Paper>
+                <List>
+                  <ListItem>
+                    <Avatar src={eachUser.profile_image} />
+                    <ListItemText
+                      primary={eachUser.username}
+                      secondary={eachUser.designation}
+                    />
+                    <Button
+                      onClick={() => deleteReq(eachUser)}
+                      sx={{ color: "grey" }}
+                      size="small"
+                    >
+                      Ignore
+                    </Button>
+                    <Button
+                      onClick={() => acceptReq(eachUser)}
+                      sx={{ ml: "5px" }}
+                      variant="outlined"
+                      size="small"
+                    >
+                      Accept
+                    </Button>
+                  </ListItem>
+                </List>
+              </Paper>
+            );
+          })}
+      </div>
+    </>
   );
 }
 

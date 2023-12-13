@@ -141,7 +141,6 @@ const Leftside = () => {
               </span>
               <span>Grow your network</span>
             </div>
-            <p>130</p>
           </a>
         </Widget>
 
