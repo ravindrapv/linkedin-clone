@@ -91,6 +91,7 @@ function Invitation() {
     showrequest();
     setConnected(false);
   }, [user]);
+  console.log();
 
   return (
     <>

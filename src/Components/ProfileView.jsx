@@ -143,6 +143,9 @@ const ProfileView = () => {
     fetchUserData();
   }, [dispatch, userId, user]);
 
+  console.log(dispatch);
+  console.log(userId);
+  console.log(user);
   const handleAddEmploymentDetail = async () => {
     try {
       const userDocRef = doc(db, "users", userId || user?.uid);
