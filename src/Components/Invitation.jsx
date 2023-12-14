@@ -96,7 +96,7 @@ function Invitation() {
   return (
     <>
       <Header />
-      <div className="w-full h-6"></div>
+      <div className="w-full h-8"></div>
       <div
         style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
       >

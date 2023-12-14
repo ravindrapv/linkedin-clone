@@ -190,13 +190,6 @@ const Main = () => {
               </button>
               {showEditPost === postID && (
                 <EditModel>
-                  <li>
-                    <img src="/Images/firebase.png" alt="saved" />
-                    <div className="info">
-                      <h6>Save</h6>
-                      <span>Save for later</span>
-                    </div>
-                  </li>
                   {post.user.title === user.email && (
                     <li onClick={() => deletePost(postID)}>
                       <img src="/Images/delete.svg" alt="" />

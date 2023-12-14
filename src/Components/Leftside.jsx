@@ -100,11 +100,11 @@ const Leftside = () => {
           {isDataLoaded && (
             <>
               {isEditing ? (
-                <EditProfileForm>
+                <EditProfileForm className=" hidden">
                   <label>Name:</label>
                   <input
                     type="text"
-                    value={newName}
+                    value={user.displayName}
                     onChange={(e) => setNewName(e.target.value)}
                   />
                   <label>Description:</label>
@@ -142,7 +142,6 @@ const Leftside = () => {
               </span>
               <span>Grow your network</span>
             </div>
-            <p>130</p>
           </a>
         </Widget>
 
@@ -166,7 +165,7 @@ const Leftside = () => {
               <label>Name:</label>
               <input
                 type="text"
-                value={newName}
+                value={user.displayName}
                 onChange={(e) => setNewName(e.target.value)}
               />
               <label>Description:</label>
@@ -200,7 +199,7 @@ const ViewProfileButton = styled.button`
   background-color: #fff;
   color: #0a66c2;
   border: 1px solid #0a66c2;
-  padding: 12px 24px;
+  padding: 8px 24px;
   border-radius: 999px;
   cursor: pointer;
   margin-top: 16px;
@@ -334,7 +333,7 @@ const EditButton = styled.button`
   background-color: #fff;
   color: #0a66c2;
   border: 1px solid #0a66c2;
-  padding: 12px 24px;
+  padding: 8px 24px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;

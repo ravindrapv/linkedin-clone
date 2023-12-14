@@ -15,12 +15,9 @@ const Login = () => {
           <img src="/Images/login-logo.svg" alt="logo" />
         </a>
         <div>
-          <a href="/feed" className="join">
-            Join now
-          </a>
-          <a href="/feed" className="login">
+          <button className="login" onClick={() => dispatch(googleSignIn())}>
             Sign in
-          </a>
+          </button>
         </div>
       </Nav>
 
@@ -82,7 +79,7 @@ const Nav = styled.nav`
     transition: 0.2s;
     font-weight: 600;
     line-height: 40px;
-    padding: 10px 24px;
+    padding: 6px 24px;
     text-align: center;
     &:hover {
       background-color: rgba(112, 181, 249, 0.15);

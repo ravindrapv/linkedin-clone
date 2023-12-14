@@ -41,7 +41,7 @@ function Network() {
   return (
     <>
       <Header />
-      <div className=" w-full h-6"></div>
+      <div className="w-full h-8"></div>
       <div
         style={{ padding: "20px", backgroundColor: "#F6F7F3", height: "100vh" }}
       >
@@ -49,7 +49,7 @@ function Network() {
           .filter((user) => user.status === "connected")
           .map((eachUser) => {
             return (
-              <Paper key={user.id} style={{ marginBottom: "10px" }}>
+              <Paper key={user.id} className=" mt-4">
                 <List>
                   <ListItem>
                     <Avatar src={eachUser.profile_image} />

@@ -34,17 +34,20 @@ const PopupOverlay = styled.div`
 `;
 
 const PopupContainer = styled.div`
+  margin-top: 60px;
   background: #fff;
-  padding: 40px;
+  padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   width: 800px;
-  max-width: 80%;
+  max-width: 90%;
+  max-height: 600px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease;
+  overflow-y: auto;
 
   label {
     display: flex;
@@ -58,7 +61,17 @@ const PopupContainer = styled.div`
 
   input {
     width: 100%;
-    padding: 10px;
+    padding: 6px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 6px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -268,22 +281,9 @@ const ProfileView = () => {
           <main>
             <Header />
             <section>
-              <div className="grid grid-cols-8 grid-rows-[70px_minmax(70px,_1fr)] gap-2 mt-5 max-[1060px]:w-10/12 max-[768px]:mx-auto">
-                {/* grid main box 1 */}
-                <div className="  bg-white col-[2_/_span_4] rounded-md row-[1_/_span_1] flex items-center justify-between max-[768px]:col-span-8">
-                  <p className="ml-5">
-                    <span className=" text-black font-bold ">
-                      Analytics &amp; tools
-                    </span>
-                    <br />
-                    <span className="text-gray-400 font-bold text-[12px]">
-                      Post impressions past 7 days
-                    </span>
-                  </p>
-                  <i className="fa-sharp fa-solid fa-arrow-right mr-5 text-gray-400" />
-                </div>
+              <div className="grid grid-cols-8 grid-rows-[70px_minmax(70px,_1fr)] gap-2 max-[1060px]:w-10/12 max-[768px]:mx-auto">
                 {/* grid slider 1 */}
-                <div className="col-[6_/_span_2] row-[1_/_span_2]  bg-white rounded-md w-[374px] max-[1060px]:w-[300px] max-[1060px]:h-fit max-[768px]:col-span-8 max-[768px]:row-[6_/_span_1] max-[768px]:w-full">
+                <div className="col-[6_/_span_2] row-[1_/_span_2] mt-20  bg-white rounded-md w-[374px] max-[1060px]:w-[300px] max-[1060px]:h-fit max-[768px]:col-span-8 max-[768px]:row-[6_/_span_1] max-[768px]:w-full">
                   <div className="flex justify-between">
                     <p className="px-4 py-4">
                       <span className=" text-black font-bold">
@@ -294,42 +294,18 @@ const ProfileView = () => {
                         English
                       </span>
                     </p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      data-supported-dps="24x24"
-                      fill="currentColor"
-                      className="mercado-match mt-2 mr-2 text-gray-400"
-                      width={24}
-                      height={24}
-                      focusable="false"
-                    >
-                      <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z" />
-                    </svg>
                   </div>
                   <div>
                     <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto" />
                   </div>
                   <div className="flex justify-between">
-                    <p className="px-4 py-4  text-black font-bold">
-                      <span>Public profile &amp; URL</span>
+                    {/* <p className="px-4 py-4  text-black font-bold">
+                      <span>Public profile &amp; email</span>
                       <br />
                       <span className="text-gray-400 text-[14px]">
-                        profile/Cy5SeZ4M43YvX93GikSLjb7IGP42
+                        {user.emai}
                       </span>
-                    </p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      data-supported-dps="24x24"
-                      fill="currentColor"
-                      className="mercado-match mt-2 mr-2 text-gray-400"
-                      width={24}
-                      height={24}
-                      focusable="false"
-                    >
-                      <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z" />
-                    </svg>
+                    </p> */}
                   </div>
                 </div>
                 <div className="col-[2_/_span_4] row-[2_/_span_2]  bg-white rounded-md max-[768px]:row-[2_/_span_1] max-[768px]:col-span-8">
@@ -357,12 +333,6 @@ const ProfileView = () => {
                         </h1>
                         <p className="text-gray-800 font-medium max-[990px]:text-[13px]">
                           {description}
-                        </p>
-                        <p className="text-gray-400 max-[990px]:text-[13px]">
-                          Davanagere, karnataka, India.
-                          <span className="text-blue-600 font-medium max-[990px]:text-[13px]">
-                            Contact info
-                          </span>
                         </p>
                         <div className=" flex gap-4">
                           <NavLink
@@ -416,53 +386,9 @@ const ProfileView = () => {
                 {/* grid slider 2 */}
                 <div className="col-[6_/_span_2]  bg-white row-[3_/_span_2] rounded-md w-[374px] max-[1060px]:w-[300px] max-[1060px]:mt-1  max-[768px]:col-span-8 max-[768px]:row-[8_/_span_1]  max-[768px]:w-full">
                   {/* slider-2-box-1 */}
-                  <p className="px-8 py-5  text-black font-bold">
-                    People also viewed
-                  </p>
+                  <p className="px-8 py-5  text-black font-bold">Users</p>
+                  <hr />
                   <Connection />
-                </div>
-                {/* grid main box 3 */}
-                <div
-                  className=" bg-white col-[2_/_span_4] row-[4_/_span_1] rounded-md max-[768px]:row-[3_/_span_1]
-          max-[768px]:col-span-8 h-fit"
-                >
-                  <h2 className=" text-black text-xl font-bold ml-5">
-                    Resourses
-                  </h2>
-                  <p className="text-gray-400 font-medium ml-5">
-                    <i className="fa-solid fa-eye mb-4" />
-                    Private to you
-                  </p>
-                  <div>
-                    <h2 className=" text-black font-bold  ml-5">
-                      <i className="fa-sharp fa-solid fa-satellite-dish text-gray-400" />
-                      Creator mode{" "}
-                      <span className="px-[8px] bg-green-500 rounded-md text-black">
-                        on
-                      </span>
-                    </h2>
-                    <p className="text-gray-400 font-normal text-[14px] ml-5">
-                      Get discovered, showcase content on your profile, and get
-                      access to creator tools.
-                    </p>
-                  </div>
-                  <hr className="w-11/12  h-[1px] border-[#ffffff1f] mx-auto mb-2 mt-2" />
-                  <div>
-                    <h2 className="text-gray-400 ml-5">
-                      <i className="mr-10 fa-solid fa-user-group" />
-                      <span className=" text-black font-bold -ml-9">
-                        My network
-                      </span>
-                    </h2>
-                    <p className="ml-5 font-normal text-gray-400 text-[14px]">
-                      See and manage your connections and intrests.
-                    </p>
-                  </div>
-                  <hr className="w-full  h-[1px] border-[#ffffff1f] mx-auto mb-2 mt-2" />
-                  <p className="mb-2 flex justify-center font-bold  text-black">
-                    {" "}
-                    Show all 5 resourses
-                  </p>
                 </div>
                 {/* grid main box 4 */}
                 <div className="bg-white col-[2_/_span_4] row-span-4 rounded-md max-[768px]:col-span-8 max-[768px]:row-[4_/_span_1] p-4">
@@ -473,7 +399,7 @@ const ProfileView = () => {
                       </h2>
                     </div>
                     <div className="flex">
-                      <button
+                      {/* <button
                         onClick={() =>
                           handleEditClick(employmentDetails.length)
                         }
@@ -494,7 +420,7 @@ const ProfileView = () => {
                         >
                           <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z" />
                         </svg>
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                   <hr className="w-full h-[1px] border-[#ffffff1f] mx-auto mb-5 mt-5" />
@@ -508,16 +434,14 @@ const ProfileView = () => {
                           <p>{detail.startDate}-- to</p>
                           <p>--{detail.endDate}</p>
                         </div>
-                        <button
-                          className="editButton text-blue-500"
-                          onClick={() => handleEditClick(index)}
-                        >
+                        <EditButton onClick={() => handleEditClick(index)}>
                           Edit
-                        </button>
+                        </EditButton>
+                        <hr className=" my-4" />
                       </div>
                     ))}
                   {isEditing && editedIndex !== null && (
-                    <div className="mb-6">
+                    <div className="mb-6 hidden">
                       <input
                         type="text"
                         required
@@ -630,8 +554,7 @@ const ProfileView = () => {
                         }
                       />
                       <label>Description:</label>
-                      <input
-                        type="text"
+                      <textarea
                         required
                         placeholder="Description"
                         value={isEditing ? editedDescription : newDescription}
@@ -674,9 +597,14 @@ const ProfileView = () => {
                             </CancelButton>
                           </div>
                         ) : (
-                          <SaveButton onClick={handleAddEmploymentDetail}>
-                            Add
-                          </SaveButton>
+                          <div>
+                            <SaveButton onClick={handleAddEmploymentDetail}>
+                              Add
+                            </SaveButton>
+                            <CancelButton onClick={handleCancelEdit}>
+                              Cancel
+                            </CancelButton>
+                          </div>
                         )}
                       </div>
                     </Popup>
@@ -762,6 +690,22 @@ const ProfileView = () => {
     </>
   );
 };
+
+const EditButton = styled.button`
+  background-color: #fff;
+  color: #0a66c2;
+  border: 1px solid #0a66c2;
+  padding: 8px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #f2f8fc;
+  }
+`;
 
 const SaveButton = styled.button`
   background-color: #0a66c2;

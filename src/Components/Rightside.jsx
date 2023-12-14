@@ -13,7 +13,7 @@ const Rightside = (props) => {
 
         <div className="mb-8 mt-8">
           <div className=" text-sm  mb-2">IT hiring more talent at the top</div>
-          <div className="text-gray-500">19h ago • 730 readers</div>
+          <div className="text-gray-500"></div>
         </div>
       </FollowCard>
       <BannerCard>

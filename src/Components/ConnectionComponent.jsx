@@ -63,7 +63,7 @@ function Connection() {
   return (
     <>
       <Header />
-      <div className=" w-full h-6"></div>
+      <div className="w-full h-8"></div>
       <div>
         <List>
           {userData
