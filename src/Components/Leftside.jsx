@@ -31,11 +31,11 @@ const Leftside = () => {
           }
 
           const userData = userDocSnap.data();
-          setNewName(userData.name || ""); // Set the name
+          setNewName(user.displayName || ""); // Set the name
           setNewDescription(userData.description || "");
           setNewBio(userData.bio || "");
           if (
-            !userData.name.trim() &&
+            !user.displayName.trim() &&
             !userData.description.trim() &&
             !userData.bio.trim()
           ) {

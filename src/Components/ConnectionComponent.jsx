@@ -10,11 +10,12 @@ import {
   Paper,
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Header from "./Hedader";
 
 function Connection() {
   const location = useLocation();
-
+  const user = useSelector((state) => state.user.value);
   console.log(location);
 
   const [userData, setUserData] = useState([]);
